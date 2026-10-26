@@ -46,5 +46,5 @@ export const getTotal = () => {
 };
 
 export const getSubTotal = (item: CartItem) => {
-  return item.movie.price * item.qty;
+  return (item.movie.price || 0) * item.qty;
 };
