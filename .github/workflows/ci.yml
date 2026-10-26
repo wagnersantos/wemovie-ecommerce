@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Validate & Build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: Install dependencies (clean install)
+        run: npm ci
+
+      - name: Type check (TypeScript)
+        run: npm run typecheck
+
+      - name: Lint code (ESLint)
+        run: npm run lint
+
+      - name: Run unit & integration tests (Vitest)
+        run: npm test -- --run
+
+      - name: Build production bundle (Next.js)
+        run: npm run build
+        env:
+          NEXT_PUBLIC_URL_API: "https://your-api-url.example.com/api/movies"
