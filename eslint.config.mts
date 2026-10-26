@@ -6,6 +6,9 @@ import { defineConfig } from "eslint/config";
 
 export default defineConfig([
   {
+    ignores: ["node_modules/**", ".next/**", "tailwind.config.js"],
+  },
+  {
     files: ["**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}"],
     plugins: { js },
     extends: ["js/recommended"],
@@ -20,4 +23,10 @@ export default defineConfig([
   },
   tseslint.configs.recommended,
   pluginReact.configs.flat.recommended,
+  {
+    rules: {
+      "react/react-in-jsx-scope": "off",
+      "react/prop-types": "off",
+    },
+  },
 ]);
