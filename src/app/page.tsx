@@ -6,9 +6,10 @@ import MovieCard from "@/components/MovieCard";
 import EmptyState from "@/components/ShowState";
 
 export default function Page() {
-  const { movies, isLoading } = useMovies();
+  const { movies, isLoading, error } = useMovies();
   
   if (isLoading) return <Loading />;
+  if (error) return <EmptyState text="Ops! Ocorreu um erro ao carregar os filmes." textButton="Tentar novamente" />;
   if(!movies.length) return <EmptyState />;
   return (
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
