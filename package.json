@@ -1,10 +1,21 @@
 {
+  "name": "wemovie-ecommerce",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A movie e-commerce application built with Next.js 16, React 19, and TypeScript",
+  "author": "Wagner Santos",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wagnersantos/wemovie-ecommerce.git"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
     "lint:fix": "eslint --fix",
+    "typecheck": "tsc --noEmit",
     "test": "vitest",
     "test:watch": "vitest --watch",
     "test:coverage": "vitest run --coverage"
@@ -29,15 +40,12 @@
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.0",
-    "@types/jest": "^30.0.0",
     "@types/node": "24.9.1",
     "@types/react": "19.2.2",
     "@vitejs/plugin-react": "^5.0.4",
     "eslint": "^9.38.0",
     "eslint-plugin-react": "^7.37.5",
     "globals": "^16.4.0",
-    "jest": "^30.2.0",
-    "jest-environment-jsdom": "^30.2.0",
     "tailwindcss": "^4.1.15",
     "ts-node": "^10.9.2",
     "typescript": "5.9.3",
