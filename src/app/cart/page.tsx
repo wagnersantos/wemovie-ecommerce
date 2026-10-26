@@ -34,7 +34,7 @@ export default function CartPage() {
               >
                 produto
               </p>
-              <img src={movie.image} className="object-cover w-16 rounded" />
+              <Image src={movie.image} alt={movie.title} width={64} height={82} className="object-cover rounded" />
             </div>
 
             <div className="flex flex-col w-full md:flex-row md:items-center">
@@ -47,12 +47,13 @@ export default function CartPage() {
                   <p className="font-bold text-base text-[#2F2E41]">
                     {formatCurrencyBRL(movie.price)}
                   </p>
-                  <Image
-                    src={Remove}
-                    alt="Imagem lixeira"
+                  <button
                     onClick={() => removeFromCart(movie.id)}
+                    aria-label={`Remover ${movie.title} do carrinho`}
                     className='cursor-pointer md:absolute md:right-0 md:-mt-5'
-                  />
+                  >
+                    <Image src={Remove} alt="Imagem lixeira" />
+                  </button>
                 </div>
               </div>
 
@@ -67,13 +68,17 @@ export default function CartPage() {
                     qtd
                   </p>
                   <div className="flex items-center">
-                    <Image src={Minus} alt="Imagem diminuir" onClick={() => changeQty(movie.id, qty - 1)} className='cursor-pointer' />
+                    <button onClick={() => changeQty(movie.id, qty - 1)} aria-label={`Diminuir quantidade de ${movie.title}`} className='cursor-pointer'>
+                      <Image src={Minus} alt="Imagem diminuir" />
+                    </button>
                     <div className="flex items-center justify-center min-w-14.75 px-3 py-0.5 border border-[#D9D9D9] rounded-sm mx-2.75">
                       <span className='font-normal text-sm text-[#2F2E41]'>
                         {qty}
                       </span>
                     </div>
-                    <Image src={Add} alt="Imagem aumentar" onClick={() => changeQty(movie.id, qty + 1)} className='cursor-pointer' />
+                    <button onClick={() => changeQty(movie.id, qty + 1)} aria-label={`Aumentar quantidade de ${movie.title}`} className='cursor-pointer'>
+                      <Image src={Add} alt="Imagem aumentar" />
+                    </button>
                   </div>
                 </div>
 

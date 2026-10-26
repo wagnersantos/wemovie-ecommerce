@@ -16,7 +16,7 @@ export default function MovieCard({ movie }: { movie: Movie }) {
 
   return (
     <article className="bg-white rounded-sm gap-2 p-4 flex flex-col justify-center items-center">
-      <img src={movie.image} alt={movie.title} className="w-36.75 object-cover rounded" />
+      <Image src={movie.image} alt={movie.title} width={147} height={188} className="object-cover rounded" />
       <h3 className="text-[#333] font-bold text-xs">{movie.title}</h3>
       <span className="font-bold text-[#2F2E41] text-base">{formatCurrencyBRL(movie.price)}</span>
       <Button
